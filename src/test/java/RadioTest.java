@@ -17,7 +17,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextWaveZero() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(30);
         radio.setCurrentWave(radio.getMaxRadioStation());
         radio.nextWave();
 
