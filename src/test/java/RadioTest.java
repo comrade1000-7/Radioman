@@ -17,8 +17,8 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextWaveZero() {
-        Radio radio = new Radio();
-        radio.setCurrentWave(9);
+        Radio radio = new Radio(30);
+        radio.setCurrentWave(radio.getMaxRadioStation());
         radio.nextWave();
 
         int expected = 0;
@@ -40,12 +40,12 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetPrevWaveNine() {
+    public void shouldSetPrevWaveMax() {
         Radio radio = new Radio();
         radio.setCurrentWave(0);
         radio.prevWave();
 
-        int expected = 9;
+        int expected = radio.getMaxRadioStation();
         int actual = radio.getCurrentWave();
 
         Assertions.assertEquals(expected, actual);
@@ -66,10 +66,10 @@ public class RadioTest {
     @Test
     public void shouldNotIncreaseVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(radio.getMaxVolume());
         radio.increaseVolume();
 
-        int expected = 10;
+        int expected = radio.getMaxVolume();
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
